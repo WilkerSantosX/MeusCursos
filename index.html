@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Developer's Perfil</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/site.css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-more.js"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	</head>
+
+	<body class="container">	
+		<div class="pg-container">
+			<div class="dashboard-container">
+				<div class="c_card">
+					<div class="row user-profile">
+					
+						<div class="user-profile__basic-details">
+							<div class="user-profile__image">
+								<img src="https://lh3.googleusercontent.com/a-/AAuE7mD09WjIqP8KFzUJfYqNVzN5jRqsxfH4BDAE07U4PA?sz=150" class="profile-image"></div>
+							<div class="user-profile__status">
+								<div class="user-profile__name">Wilker Santos</div>
+								<div class="user-profile__level">.NET Fullstack</div>
+							</div>
+						</div>
+						
+						<div class="user-profile__separator"></div>
+						
+						<div class="user-profile__cleared-pages">
+							<div class="user-profile__cleared-count"><img src="https://d2aj9sy12tbpym.cloudfront.net/javascripts/dist/assets/lesson-24d1fc462c404fd518104f46440e4ec6.svg">8</div>
+							<div class="user-profile__cleared-text">Cursos Concluidos</div>
+						</div>
+						
+						<div class="user-profile__separator"></div>
+						
+						<div class="user-profile__cleared-lessons">
+							<div class="user-profile__cleared-count"><img src="https://d2aj9sy12tbpym.cloudfront.net/javascripts/dist/assets/completed-ribbon-7d6635446596de8f57bc0063186c8b32.svg">8</div>
+							<div class="user-profile__cleared-text">Certificados <a href="#!" data-toggle="modal" data-target="#myModal" id="modalGrid">Clique aqui</a></div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row border">
+			<div class="col-sm-12 col-md-12">
+				<div id="grafico"></div>
+			</div>
+		</div>
+	
+		<!-- The Modal -->
+		<div class="modal fade bd-example-modal-xl" id="myModal">
+			<div class="modal-dialog modal-xl" role="document">
+			  <div class="modal-content">
+			  
+				<!-- Modal Header -->
+				<div class="modal-header">
+				  <h4 class="modal-title">Meus Certificados</h4>
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<!-- The Spinner -->
+				<div class="d-flex justify-content-center" style="padding:29px">
+				  <div class="spinner-border" role="status">
+					<span class="sr-only">Loading...</span>
+				  </div>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="table-responsive">
+						<table class="table" id="table_id" style="width:100%">
+						  <thead>
+							<tr>
+							  <th>Order</th>
+							  <th>Emissão</th>
+							  <th>Curso</th>
+							  <th>Organização emissora</th>
+							  <th>Área</th>
+							  <th>Certificado</th>
+							</tr>
+						  </thead>
+						  <tbody>
+						  </tbody>
+						</table>
+					</div>	
+				</div>
+				
+				
+				<!-- Modal footer -->
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+				</div>
+				
+			  </div>
+			</div>
+		</div> 	
+	</body>
+		
+	<script>
+	
+		$(document).ready( function () {
+			
+			$('#modalGrid').on('click', function () {				   
+				   $('.d-flex').css('padding','29px');	
+				   $('.spinner-border').show();
+				   $('.modal-body').hide();
+				   setTimeout(function(){
+				        $('.d-flex').css('padding','0px');				   
+						$('.spinner-border').hide();
+						$('.modal-body').show();
+						var table = $('#table_id').DataTable();
+						table.columns.adjust();						
+					}, 1000);
+			});
+				
+			Highcharts.chart('grafico', {
+				chart: {
+					type: 'column',
+				},
+
+				title: {
+					text: 'Total de cursos por área de foco',
+					style: {
+						font: 'bold 18px "Trebuchet MS", Verdana, sans-serif',
+					}
+				},
+				subtitle: {
+					style: {
+						color: '#666666',
+						font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
+					}
+				},
+				legend: {
+					itemStyle: {
+						font: '9pt Trebuchet MS, Verdana, sans-serif',
+					},
+					itemHoverStyle: {
+						color: 'gray'
+					}
+				},
+
+				yAxis: [{
+					className: 'highcharts-color-0',
+					title: {
+						text: ''
+					}
+				}, {
+					className: 'highcharts-color-1',
+					opposite: true,
+					title: {
+						text: ''
+					}
+				}],
+
+				plotOptions: {
+					column: {
+						borderRadius: 5
+					},
+					series: {
+						dataLabels: {
+							enabled: true
+						}
+					}
+				},
+
+				series: [
+					{
+						name: 'Front-end',
+						data: [4],
+						dataLabels: {
+							enabled: true,
+							style: {
+								fontSize: '24px'
+							}
+						},
+					}, {
+						name: 'Back-end',
+						data: [1],
+						dataLabels: {
+							enabled: true,
+							style: {
+								fontSize: '24px'
+							}
+						},
+					}, {
+						name: 'Data Science',
+						data: [1],
+						dataLabels: {
+							enabled: true,
+							style: {
+								fontSize: '24px'
+							}
+						},
+					}, {
+						name: 'Full Stack',
+						data: [2],
+						dataLabels: {
+							enabled: true,
+							style: {
+								fontSize: '24px'
+							}
+						},
+					},  ]
+
+			});
+			
+			var dadosCursos = [
+					{
+						"count" : "1",
+						"emission": "2020/02",
+						"course":   "Command Line Unix",
+						"issuing organization": "Progate",
+						"area": "Full Stack",
+						"certification":  '<a href="#!">Ver</a>',
+					},
+					{
+						"count" : "2",
+						"emission": "2020/02",
+						"course":   "Javascript Study I",
+						"issuing organization": "Progate",
+						"area": "Front-end",
+						"certification":  '<a href="https://drive.google.com/file/d/1Fdx0Che7fs4mLdgwfFsiy4hFNyLodaIJ/view?usp=sharing" target="_blank">Ver</a>',
+					},
+					{
+						"count" : "3",
+						"emission": "2020/02",
+						"course":   "Jquery Study I",
+						"issuing organization": "Progate",
+						"area": "Front-end",
+						"certification":  '<a href="#!">Ver</a>',
+					},
+					{
+						"count" : "4",
+						"emission": "2020/01",
+						"course":   "HTML & CSS Study I",
+						"issuing organization": "Progate",
+						"area": "Front-end",
+						"certification":  '<a href="https://drive.google.com/file/d/1vF_v-n6xJN2oBmNcWYCSzj40H53xqGXh/view?usp=sharing" target="_blank">Ver</a>',
+					},
+					{
+						"count" : "5",
+						"emission": "2019/12",
+						"course":   "Curso de Desenvolvimento Android",
+						"issuing organization": "iPed",
+						"area": "Full Stack",
+						"certification":  '<a href="#!">Ver</a>',
+					},
+					{
+						"count" : "6",
+						"emission": "2019/10",
+						"course":   ".NET na Prática",
+						"issuing organization": "iPed",
+						"area": "Back-end",
+						"certification":  '<a href="https://drive.google.com/file/d/1iixfrFnJOqFobyWU42HLY8mG1uHdr5sH/view?usp=sharing" target="_blank">Ver</a>',
+					},
+					{
+						"count" : "7",
+						"emission": "2019/10",
+						"course":   "HTML Fundamentals",
+						"issuing organization": "SoloLearn",
+						"area": "Front-end",
+						"certification":  '<a href="#!">Ver</a>',
+					},
+					{
+						"count" : "8",
+						"emission": "2019/10",
+						"course":   "Small e Big Data",
+						"issuing organization": "iPed",
+						"area": "Data Science",
+						"certification":  '<a href="#!">Ver</a>',
+					}										
+				]
+				
+				var table = $('#table_id').DataTable( {
+					data: dadosCursos,
+					columns: [
+						{ data: 'count'},
+						{ data: 'emission'},
+						{ data: 'course'},
+						{ data: 'issuing organization'},
+						{ data: 'area'},
+						{ data: 'certification'}
+					],			
+					//scrollY: 400
+					aLengthMenu: [
+						  [5, 10, 50, 100],
+						  [5, 10, 50, 100]
+					],
+					iDisplayLength: 5
+					
+				} );
+		} );
+		
+	</script>
+</html>

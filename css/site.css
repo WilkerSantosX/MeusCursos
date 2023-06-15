@@ -1,0 +1,140 @@
+	html {
+		font: 100%/1.5 "Lato", "Hiragino Maru Gothic Pro", "Meiryo UI", Meiryo, "MS PGothic", sans-serif;
+		-webkit-tap-highlight-color: transparent;
+		line-height: 1.7142857143;
+	}
+
+	body{
+		margin-top:20px;
+		margin-bottom:20px;
+		margin-left:10px;
+		background:#f9fbfe;
+	}
+
+	.row {
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.c_card{
+		box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+		-webkit-font-smoothing: antialiased;
+		-moz-font-smoothing: antialiased;
+		-ms-font-smoothing: antialiased;
+		-o-font-smoothing: antialiased;
+		font-smoothing: antialiased;
+		position: relative;
+		width: 100%;
+		border-radius: 3px;
+		background-color: #fff;
+	}
+		
+	.user-profile {
+		padding: 24px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: #2b546a;
+	}
+
+	.user-profile__basic-details {
+		display: flex;
+		align-items: center;
+	}
+
+	.user-profile__image {
+		position: relative;
+		text-align: left;
+	}
+	
+		.user-profile__image .profile-image {
+			box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+			border: 0;
+			height: 80px;
+			width: 80px;
+			margin-right: 16px;
+			border-radius: 50%;
+			background-size: cover;
+			background-position: center;
+			float: left;
+		}
+		
+	.user-profile__status {
+		float: left;
+		text-align: left;
+	}
+
+	.user-profile__separator {
+		background-color: #e9edf4;
+		width: 1px;
+		height: 96px;
+		margin: 0 65px;
+		display: flex;
+	}
+
+	.user-profile__cleared-lessons, .user-profile__cleared-pages {
+		text-align: center;
+	}
+	
+	.user-profile__cleared-count img {
+		margin-right: 4px;
+		width: 18px;
+	}
+
+	.user-profile__cleared-count {
+		font-size: 2rem;
+		line-height: 1.5rem;
+		display: inline-flex;
+		align-items: flex-end;
+		margin-bottom: 8px;
+	}
+	
+	.user-profile__cleared-text {
+		font-size: 0.75rem;
+	}
+	
+	.pg-container {
+		margin-left: auto;
+		margin-right: auto;
+		/* padding: 40px 0; */
+		min-height: 150px;
+		margin-bottom: 10px;
+		/* letter-spacing: .04em; */
+	}
+	
+	.dashboard-container {
+		display: flex;
+		max-width: 1170px;
+		margin: 0 auto;
+	}
+	
+	@media (max-width: 544px){
+		.user-profile {
+			padding: 32px 0;
+			display: flex;
+			flex-direction: column;
+		}
+			.user-profile__separator {
+			width: 150px;
+			height: 1px;
+			margin: 24px 0;
+		}	
+	}
+
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
